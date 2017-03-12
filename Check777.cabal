@@ -1,0 +1,43 @@
+name:                 Check777
+version:              1.0.0
+synopsis:             
+-- description:
+-- license:
+-- license-file:
+homepage:             
+author:               connrs
+maintainer:           paul.connolley@gmail.com
+category:             
+-- copyright:
+build-type:           Simple
+-- extra-source-files:
+cabal-version:        >=1.10
+
+executable unsecured_paths
+  main-is:              Main.hs
+  other-modules: DirectoryTree
+               , Utils
+               , HtaccessCheck
+  build-depends: base >= 4.7 && < 5
+               , text
+               , file-embed
+               , directory
+               , parallel
+               , monad-parallel
+  hs-source-dirs: .
+  default-language: Haskell2010
+  ghc-options: -O2
+
+library
+    build-depends: base >= 4.7 && < 5
+                 , text
+                 , file-embed
+                 , directory
+                 , parallel
+                 , monad-parallel
+    hs-source-dirs: .
+    exposed-modules: DirectoryTree
+                   , Utils
+                   , HtaccessCheck
+                   , TestData
+    default-language: Haskell2010
