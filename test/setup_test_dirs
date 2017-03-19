@@ -1,0 +1,14 @@
+#!env sh
+
+# Set up the textual data that represents our test data
+
+#Loop through all subdirectories of "dirs"
+for t in test/dirs/*
+do
+  # Extract the subfolder name
+  bt="$(basename $t)"
+
+  # Find all 777 directories within this subfolder
+  # and output their name to a file named after the subdir
+  find "$t" -type d -perm 777 > "test/$bt"
+done

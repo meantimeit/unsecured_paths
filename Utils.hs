@@ -29,3 +29,15 @@ sndM = return . snd
 -- | a monad
 fstM :: (Monad m) => (a,b) -> m a
 fstM = return . fst
+
+-- | Zip 2 monadic lists
+zipM :: Monad m => m [a] -> m [b] -> m [(a,b)]
+zipM ma mb = do
+    a <- ma
+    b <- mb
+    let z = zip a b
+    return z
+
+-- | Take a list of filepaths and map their contents
+readFiles :: [String] -> IO [String]
+readFiles = mapM readFile
