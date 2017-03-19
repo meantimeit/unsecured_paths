@@ -1,0 +1,7 @@
+test/dirs/one_nested_set_of_bad_dirs/a
+test/dirs/one_nested_set_of_bad_dirs/a/b
+test/dirs/one_nested_set_of_bad_dirs/a/b/c
+test/dirs/one_nested_set_of_bad_dirs/a/b1
+test/dirs/one_nested_set_of_bad_dirs/a/b1/c
+test/dirs/one_nested_set_of_bad_dirs/a/b2
+test/dirs/one_nested_set_of_bad_dirs/a/b2/c

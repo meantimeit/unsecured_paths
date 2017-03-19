@@ -2,7 +2,8 @@ module DirectoryTree ( fromStringList
                      , getPathList
                      , DirectoryTree(..) ) where
 
-import           Data.List (isPrefixOf, sort)
+import           Data.Function (on)
+import           Data.List     (isPrefixOf, sort)
 import           Utils
 
 -- | The main data type for this program. The DirectoryTree
@@ -45,7 +46,7 @@ appendChild (Node a b) c = Node a (b ++ [c])
 -- | Detect whether a given node could actually live as a child of another
 -- | node
 isChildOf :: DirectoryTree String -> DirectoryTree String -> Bool
-(Node child _) `isChildOf` (Node parent _) = parent `isPrefixOf` child
+isChildOf = flip isPrefixOf `on` (splitWith '/' . getPath)
 
 -- | Detect whether a given node could actually live as a child of another
 -- | node
@@ -69,3 +70,5 @@ numDirs = length . splitWith '/'
 fromPath :: a -> DirectoryTree a
 fromPath a = Node a []
 
+getPath :: DirectoryTree a -> a
+getPath (Node a _) = a
