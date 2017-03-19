@@ -31,12 +31,12 @@ getScenarios :: [FilePath] -> [FilePath] -> IO [(ActualSrc, Expected)]
 getScenarios s e = zipM (readFiles s) (readFiles e)
 
 scenarios :: [FilePath]
-scenarios = [ "test/no_matches"
-            , "test/one_match_no_problems"
-            , "test/one_nested_set_of_bad_dirs"
-            , "test/prevent_a1_being_categorised_as_subfolder_of_a"
-            , "test/two_nested_sets_of_bad_dirs"
-            , "test/can_protect_directories_one_level_up" ]
+scenarios = [ "test/cases/no_matches"
+            , "test/cases/one_match_no_problems"
+            , "test/cases/one_nested_set_of_bad_dirs"
+            , "test/cases/prevent_a1_being_categorised_as_subfolder_of_a"
+            , "test/cases/two_nested_sets_of_bad_dirs"
+            , "test/cases/can_protect_directories_one_level_up" ]
 
 expected :: [FilePath]
 expected = map (++ "_expected") scenarios

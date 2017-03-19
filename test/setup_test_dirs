@@ -10,5 +10,5 @@ do
 
   # Find all 777 directories within this subfolder
   # and output their name to a file named after the subdir
-  find "$t" -type d -perm 777 > "test/$bt"
+  find "$t" -type d -perm 777 > "test/cases/$bt"
 done
