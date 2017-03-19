@@ -21,7 +21,7 @@ runTestM (s, e) = do
 
 -- Run the tests against the provided paths
 runTest :: String -> IO String
-runTest ls = (return $ (fromStringList . lines) ls)
+runTest ls = (return . fromStringList . lines $ ls)
          >>= mapM chkUnsec
          >>= filterM sndM
          >>= mapM fstM
@@ -35,7 +35,8 @@ scenarios = [ "test/no_matches"
             , "test/one_match_no_problems"
             , "test/one_nested_set_of_bad_dirs"
             , "test/prevent_a1_being_categorised_as_subfolder_of_a"
-            , "test/two_nested_sets_of_bad_dirs" ]
+            , "test/two_nested_sets_of_bad_dirs"
+            , "test/can_protect_directories_one_level_up" ]
 
 expected :: [FilePath]
 expected = map (++ "_expected") scenarios
