@@ -1,8 +1,9 @@
-import           Control.Monad    (filterM)
+import           Control.Monad  (filterM)
 import           DirectoryTree
 import           Test.HUnit
 import           UnsecuredCheck
 import           Utils
+import           Utils.Par      (pMapM)
 import           Utils.Test
 
 type ActualSrc = String
@@ -22,7 +23,7 @@ runTestM (s, e) = do
 -- Run the tests against the provided paths
 runTest :: String -> IO String
 runTest ls = (return . fromStringList . lines $ ls)
-         >>= mapM chkUnsec
+         >>= pMapM chkUnsec
          >>= filterM sndM
          >>= mapM fstM
          >>= return . unlines
