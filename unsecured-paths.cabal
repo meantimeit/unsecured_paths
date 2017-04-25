@@ -1,4 +1,4 @@
-name:                 Check777
+name:                 unsecured-paths
 version:              1.0.1
 synopsis:             
 -- description:
@@ -48,7 +48,7 @@ library
                     , Utils.Test
   default-language:   Haskell2010
 
-test-suite check777_test
+test-suite unsecured-paths_test
   type:               exitcode-stdio-1.0
   hs-source-dirs:     .
                     , lib
@@ -59,7 +59,7 @@ test-suite check777_test
                     , file-embed
                     , monad-par
                     , text
-                    , Check777
+                    , unsecured-paths
                     , HUnit
   other-modules:      DirectoryTree
                     , HtaccessCheck
