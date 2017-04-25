@@ -1,4 +1,5 @@
 import           Control.Monad  (filterM)
+import           Data.Foldable  (foldlM)
 import           DirectoryTree
 import           Test.HUnit
 import           UnsecuredCheck
@@ -24,8 +25,7 @@ runTestM (s, e) = do
 runTest :: String -> IO String
 runTest ls = (return . fromStringList . lines $ ls)
          >>= pMapM chkUnsec
-         >>= filterM sndM
-         >>= mapM fstM
+         >>= foldlM fstOnSndIsTrueM []
          >>= return . unlines
 
 getScenarios :: [FilePath] -> [FilePath] -> IO [(ActualSrc, Expected)]

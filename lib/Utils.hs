@@ -41,3 +41,7 @@ zipM ma mb = do
 -- | Take a list of filepaths and map their contents
 readFiles :: [String] -> IO [String]
 readFiles = mapM readFile
+
+fstOnSndIsTrueM :: (Applicative f, Monad m, Monoid (f a)) => f a -> (a, Bool) -> m (f a)
+fstOnSndIsTrueM ps (p, True) = return $ ps `mappend` pure p
+fstOnSndIsTrueM ps _         = return ps

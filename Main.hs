@@ -1,6 +1,7 @@
 module Main where
 
 import           Control.Monad  (filterM)
+import           Data.Foldable  (foldlM)
 import           DirectoryTree
 import           UnsecuredCheck
 import           Utils
@@ -14,9 +15,8 @@ main = getPathList
    -- map (in parallel) through the list of paths and identify
    -- whether the path is secure or not. Pair up the paths and
    -- boolean secure status
-   >>= filterM sndM
+   >>= foldlM fstOnSndIsTrueM []
    -- Remove any items that aren't listed as unsecure
-   >>= mapM fstM
    -- Convert the list to a list of paths again
    >>= putStr . unlines
    -- Combine the lines and output them
